@@ -17,4 +17,8 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/servers']);
   }
 
+  onLoadUser(id: HTMLInputElement, name: HTMLInputElement) {
+    this.router.navigate(['/users',id.value, name.value]);
+  }
+
 }
