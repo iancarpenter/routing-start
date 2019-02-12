@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ServersService } from '../servers/servers.service';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,8 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, 
+              private serversService: ServersService) { }
 
   ngOnInit() {
   }
@@ -19,6 +21,11 @@ export class HomeComponent implements OnInit {
 
   onLoadUser(id: HTMLInputElement, name: HTMLInputElement) {
     this.router.navigate(['/users',id.value, name.value]);
+  }
+
+  onGetServer() {
+    console.log(this.serversService.getServer(1).name);
+
   }
 
 }
