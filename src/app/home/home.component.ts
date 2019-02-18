@@ -9,7 +9,7 @@ import { ServersService } from '../servers/servers.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router: Router, 
+  constructor(private router: Router,
               private serversService: ServersService) { }
 
   ngOnInit() {
@@ -19,13 +19,17 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/servers']);
   }
 
+  onLoadServer(id: number) {
+    this.router.navigate(['/servers', id, 'edit'], { queryParams: {allowEdit: '1'}, fragment: 'loading' });
+
+  }
+
   onLoadUser(id: HTMLInputElement, name: HTMLInputElement) {
-    this.router.navigate(['/users',id.value, name.value]);
+    this.router.navigate(['/users', id.value, name.value]);
   }
 
   onGetServer() {
     console.log(this.serversService.getServer(1).name);
-
   }
 
 }
