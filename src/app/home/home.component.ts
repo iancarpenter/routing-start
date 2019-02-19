@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServersService } from '../servers/servers.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,8 @@ import { ServersService } from '../servers/servers.service';
 export class HomeComponent implements OnInit {
 
   constructor(private router: Router,
-              private serversService: ServersService) { }
+              private serversService: ServersService,
+              private authService: AuthService) { }
 
   ngOnInit() {
   }
@@ -30,6 +32,14 @@ export class HomeComponent implements OnInit {
 
   onGetServer() {
     console.log(this.serversService.getServer(1).name);
+  }
+
+  onLogin() {
+    this.authService.login();
+  }
+
+  onLogout() {
+    this.authService.logout();
   }
 
 }
