@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit, OnDestroy {
-  
+
   user: {id: number, name: string};
   paramsSubscription: Subscription;
 
